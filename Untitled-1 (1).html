@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RuralConnect | Virtual Classrooms for Rural Schools</title>
+
+<style>
+:root{
+    --primary:#075985;
+    --primary-dark:#043c56;
+    --secondary:#0ea5e9;
+    --accent:#fbbf24;
+    --green:#16a34a;
+    --light:#f0f9ff;
+    --white:#ffffff;
+    --dark:#0f172a;
+    --gray:#64748b;
+    --border:#dbeafe;
+    --shadow:0 12px 35px rgba(15,23,42,.10);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--dark);
+    background:#f8fafc;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+}
+
+.container{
+    width:90%;
+    max-width:1180px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(4,60,86,.97);
+    color:white;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+.nav-container{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:var(--accent);
+    color:#111827;
+    font-size:22px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--accent);
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:none;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:calc(100vh - 72px);
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(56,189,248,.28),transparent 30%),
+        linear-gradient(135deg,#043c56 0%,#075985 48%,#0284c7 100%);
+    color:white;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:70px solid rgba(255,255,255,.04);
+    border-radius:50%;
+    right:-180px;
+    bottom:-200px;
+}
+
+.hero-content{
+    max-width:760px;
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.2);
+    padding:8px 15px;
+    border-radius:30px;
+    margin-bottom:22px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,70px);
+    line-height:1.08;
+    margin-bottom:22px;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:var(--accent);
+}
+
+.hero p{
+    font-size:19px;
+    max-width:700px;
+    color:#e0f2fe;
+    margin-bottom:32px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 23px;
+    border-radius:9px;
+    font-weight:700;
+    border:2px solid transparent;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#172033;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    background:#fcd34d;
+}
+
+.btn-outline{
+    border-color:rgba(255,255,255,.55);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:var(--primary-dark);
+}
+
+.hero-stats{
+    display:flex;
+    gap:35px;
+    margin-top:50px;
+    flex-wrap:wrap;
+}
+
+.hero-stat strong{
+    display:block;
+    font-size:28px;
+    color:var(--accent);
+}
+
+.hero-stat span{
+    font-size:13px;
+    color:#dbeafe;
+}
+
+/* GENERAL */
+
+section{
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto 50px;
+}
+
+.section-heading .label{
+    color:var(--secondary);
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    font-size:clamp(30px,4vw,45px);
+    margin:8px 0 13px;
+    color:var(--primary-dark);
+}
+
+.section-heading p{
+    color:var(--gray);
+}
+
+/* AWARENESS */
+
+.awareness{
+    background:white;
+}
+
+.awareness-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.awareness-text h3{
+    font-size:30px;
+    color:var(--primary-dark);
+    margin-bottom:15px;
+}
+
+.awareness-text p{
+    color:var(--gray);
+    margin-bottom:18px;
+}
+
+.check-list{
+    list-style:none;
+}
+
+.check-list li{
+    margin:12px 0;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+}
+
+.check{
+    flex-shrink:0;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#dcfce7;
+    color:var(--green);
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+}
+
+.awareness-card{
+    background:linear-gradient(145deg,#e0f2fe,#f0f9ff);
+    border:1px solid #bae6fd;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.awareness-card .big-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.awareness-card h3{
+    color:var(--primary-dark);
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+/* PROBLEMS */
+
+.problem{
+    background:#f0f9ff;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:28px;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(15,23,42,.05);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+}
+
+.card-icon{
+    width:55px;
+    height:55px;
+    display:grid;
+    place-items:center;
+    background:#e0f2fe;
+    border-radius:14px;
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    color:var(--primary-dark);
+    margin-bottom:9px;
+}
+
+.card p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* SOLUTION */
+
+.solution{
+    background:white;
+}
+
+.solution-card{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.solution-item{
+    padding:28px;
+    border-radius:15px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    display:flex;
+    gap:18px;
+}
+
+.solution-number{
+    flex-shrink:0;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+}
+
+.solution-item h3{
+    margin-bottom:6px;
+    color:var(--primary-dark);
+}
+
+.solution-item p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* HOW IT WORKS */
+
+.how{
+    background:#f8fafc;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    position:relative;
+}
+
+.step{
+    background:white;
+    padding:28px;
+    border-radius:16px;
+    border-top:4px solid var(--secondary);
+    box-shadow:0 5px 20px rgba(15,23,42,.06);
+}
+
+.step-number{
+    font-size:14px;
+    color:var(--secondary);
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.step h3{
+    margin-bottom:8px;
+}
+
+.step p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* EQUIPMENT */
+
+.equipment{
+    background:white;
+}
+
+.equipment-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.equipment-card{
+    padding:30px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#ffffff,#f0f9ff);
+    border:1px solid var(--border);
+}
+
+.equipment-card .emoji{
+    font-size:42px;
+    margin-bottom:14px;
+}
+
+.equipment-card h3{
+    color:var(--primary-dark);
+    margin-bottom:8px;
+}
+
+.equipment-card p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:15px;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* BENEFITS */
+
+.benefits{
+    background:linear-gradient(135deg,#075985,#0284c7);
+    color:white;
+}
+
+.benefits .section-heading h2{
+    color:white;
+}
+
+.benefits .section-heading p{
+    color:#dbeafe;
+}
+
+.benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.benefit{
+    padding:28px;
+    border-radius:15px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.benefit-icon{
+    font-size:35px;
+    margin-bottom:13px;
+}
+
+.benefit h3{
+    margin-bottom:7px;
+}
+
+.benefit p{
+    color:#dbeafe;
+    font-size:14px;
+}
+
+/* ACTION */
+
+.action{
+    background:#fff7ed;
+}
+
+.action-box{
+    background:linear-gradient(135deg,#92400e,#c2410c);
+    border-radius:25px;
+    padding:55px;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:35px;
+}
+
+.action-box h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.action-box p{
+    color:#ffedd5;
+    max-width:650px;
+}
+
+.action-box .btn{
+    flex-shrink:0;
+}
+
+/* FAQ */
+
+.faq{
+    background:white;
+}
+
+.faq-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.faq-item{
+    border-bottom:1px solid #e2e8f0;
+}
+
+.faq-question{
+    width:100%;
+    padding:20px 5px;
+    border:0;
+    background:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-align:left;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:700;
+    color:var(--primary-dark);
+}
+
+.faq-question span{
+    font-size:22px;
+    color:var(--secondary);
+}
+
+.faq-answer{
+    display:none;
+    padding:0 5px 20px;
+    color:var(--gray);
+}
+
+.faq-item.active .faq-answer{
+    display:block;
+}
+
+/* CONTACT */
+
+.contact{
+    background:#f0f9ff;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:40px;
+}
+
+.contact-info h3{
+    color:var(--primary-dark);
+    font-size:27px;
+    margin-bottom:12px;
+}
+
+.contact-info p{
+    color:var(--gray);
+    margin-bottom:20px;
+}
+
+.contact-points{
+    list-style:none;
+}
+
+.contact-points li{
+    background:white;
+    margin:10px 0;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #dbeafe;
+}
+
+form{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:13px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,textarea:focus,select:focus{
+    border-color:var(--secondary);
+    box-shadow:0 0 0 3px rgba(14,165,233,.12);
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.submit-btn{
+    width:100%;
+    border:0;
+    background:var(--primary);
+    color:white;
+    padding:14px;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.submit-btn:hover{
+    background:var(--secondary);
+}
+
+/* FOOTER */
+
+footer{
+    background:#042f40;
+    color:white;
+    padding:45px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:35px;
+    padding-bottom:30px;
+}
+
+.footer-brand h3{
+    margin-bottom:10px;
+}
+
+.footer-brand p{
+    color:#bae6fd;
+    max-width:420px;
+    font-size:14px;
+}
+
+footer h4{
+    margin-bottom:12px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin:7px 0;
+    color:#bae6fd;
+    font-size:14px;
+}
+
+footer li a:hover{
+    color:var(--accent);
+}
+
+.copyright{
+    border-top:1px solid rgba(255,255,255,.12);
+    padding-top:20px;
+    text-align:center;
+    color:#bae6fd;
+    font-size:13px;
+}
+
+/* BACK TO TOP */
+
+#topBtn{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:var(--accent);
+    color:#111827;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    z-index:999;
+    box-shadow:var(--shadow);
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .cards,
+    .steps,
+    .benefit-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .equipment-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .awareness-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:72px;
+        left:0;
+        width:100%;
+        background:#043c56;
+        flex-direction:column;
+        padding:20px;
+        display:none;
+        text-align:center;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:65px 0;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-stats{
+        gap:20px;
+    }
+
+    .cards,
+    .steps,
+    .benefit-grid,
+    .equipment-grid,
+    .solution-card{
+        grid-template-columns:1fr;
+    }
+
+    .action-box{
+        padding:35px 25px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .action-box h2{
+        font-size:28px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+<div class="container nav-container">
+
+<a href="#home" class="logo">
+<div class="logo-icon">📚</div>
+RuralConnect
+</a>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#problem">The Problem</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="badge">
+🌱 Digital Education • Rural Development • Equal Opportunity
+</div>
+
+<h1>
+Bringing <span>Quality Education</span> to Every Village
+</h1>
+
+<p>
+A virtual classroom can connect rural students with skilled teachers,
+digital learning resources and new opportunities — even when local
+educational resources are limited.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#solution" class="btn btn-primary">
+Explore the Solution →
+</a>
+
+<a href="#how" class="btn btn-outline">
+Learn How It Works
+</a>
+
+</div>
+
+<div class="hero-stats">
+
+<div class="hero-stat">
+<strong>01</strong>
+<span>Connect Schools</span>
+</div>
+
+<div class="hero-stat">
+<strong>02</strong>
+<span>Enable Learning</span>
+</div>
+
+<div class="hero-stat">
+<strong>03</strong>
+<span>Build Futures</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- AWARENESS -->
+
+<section class="awareness">
+
+<div class="container">
+
+<div class="awareness-grid">
+
+<div class="awareness-text">
+
+<div class="section-heading" style="text-align:left;margin:0 0 25px;">
+<span class="label">Why This Matters</span>
+<h2>Education Should Not Depend on Location</h2>
+</div>
+
+<p>
+Students in rural communities have talent, ambition and curiosity.
+What they often need is better access to teachers, technology,
+learning materials and educational opportunities.
+</p>
+
+<p>
+Virtual classrooms can help bridge this gap by connecting schools
+with educators and resources beyond their local area.
+</p>
+
+<ul class="check-list">
+
+<li>
+<span class="check">✓</span>
+<span>Access to qualified teachers beyond the local community.</span>
+</li>
+
+<li>
+<span class="check">✓</span>
+<span>Digital lessons, recorded classes and educational materials.</span>
+</li>
+
+<li>
+<span class="check">✓</span>
+<span>Opportunities to learn modern digital skills.</span>
+</li>
+
+<li>
+<span class="check">✓</span>
+<span>Greater awareness of higher education and career options.</span>
+</li>
+
+</ul>
+
+</div>
+
+<div class="awareness-card">
+
+<div class="big-icon">🌍</div>
+
+<h3>Our Mission</h3>
+
+<p>
+Use digital platforms to spread awareness about rural education,
+encourage communities to adopt virtual learning and help schools
+understand how technology can expand educational access.
+</p>
+
+<br>
+
+<strong>
+"Connect a classroom. Open a world of possibilities."
+</strong>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- PROBLEM -->
+
+<section class="problem" id="problem">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">Understand the Challenge</span>
+
+<h2>What Rural Schools Often Face</h2>
+
+<p>
+Before implementing technology, we need to understand the barriers
+that can prevent students from receiving quality education.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">📶</div>
+<h3>Connectivity</h3>
+<p>
+Unstable or expensive internet connections can make online learning
+difficult for rural communities.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">👩‍🏫</div>
+<h3>Teacher Shortages</h3>
+<p>
+Some schools may have limited access to teachers for specialised
+subjects such as science, mathematics or technology.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">💻</div>
+<h3>Technology Gap</h3>
+<p>
+Schools may lack computers, projectors, cameras, digital displays
+and other basic classroom technology.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📖</div>
+<h3>Learning Resources</h3>
+<p>
+Students can have fewer opportunities to access updated books,
+digital content and additional learning resources.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SOLUTION -->
+
+<section class="solution" id="solution">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">The Solution</span>
+
+<h2>A Simple Virtual Classroom Model</h2>
+
+<p>
+The goal is not to replace teachers. It is to connect students
+with more teachers, resources and opportunities.
+</p>
+
+</div>
+
+<div class="solution-card">
+
+<div class="solution-item">
+
+<div class="solution-number">1</div>
+
+<div>
+<h3>Digital Classroom</h3>
+<p>
+Equip a classroom with a computer or laptop, display/projector,
+speakers, camera and basic accessories.
+</p>
+</div>
+
+</div>
+
+<div class="solution-item">
+
+<div class="solution-number">2</div>
+
+<div>
+<h3>Reliable Connectivity</h3>
+<p>
+Use the most suitable internet option available locally, with
+offline resources as a backup where connectivity is limited.
+</p>
+</div>
+
+</div>
+
+<div class="solution-item">
+
+<div class="solution-number">3</div>
+
+<div>
+<h3>Virtual Teaching</h3>
+<p>
+Connect students with teachers through video classes, interactive
+sessions, guest lectures and subject-specific lessons.
+</p>
+</div>
+
+</div>
+
+<div class="solution-item">
+
+<div class="solution-number">4</div>
+
+<div>
+<h3>Digital Resources</h3>
+<p>
+Provide recorded lessons, notes, quizzes, assignments, educational
+videos and other learning materials.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="how" id="how">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">Implementation Guide</span>
+
+<h2>How Can a School Get Started?</h2>
+
+<p>
+A virtual classroom does not need to be built all at once.
+Start small, test the system and expand gradually.
+</p>
+
+</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">STEP 01</div>
+<h3>Identify the Need</h3>
+<p>
+Talk to teachers, students and parents. Identify subjects,
+connectivity problems and the resources currently available.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 02</div>
+<h3>Prepare the Classroom</h3>
+<p>
+Choose a suitable room and arrange electricity, internet,
+seating, display equipment and basic technical facilities.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 03</div>
+<h3>Train the Team</h3>
+<p>
+Teachers and coordinators should learn how to operate the equipment,
+manage online classes and support students.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 04</div>
+<h3>Start & Improve</h3>
+<p>
+Begin with a few sessions, collect feedback and gradually expand
+the subjects, teachers and digital resources.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- RESOURCES -->
+
+<section class="equipment" id="resources">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">Practical Resources</span>
+
+<h2>What Does a Virtual Classroom Need?</h2>
+
+<p>
+The exact setup can vary depending on the school's budget,
+internet availability and local conditions.
+</p>
+
+</div>
+
+<div class="equipment-grid">
+
+<div class="equipment-card">
+<div class="emoji">💻</div>
+<h3>Laptop or Computer</h3>
+<p>
+Used to access online classes, educational platforms, presentations
+and digital learning resources.
+</p>
+<span class="tag">Essential</span>
+</div>
+
+<div class="equipment-card">
+<div class="emoji">📽️</div>
+<h3>Projector / Smart Display</h3>
+<p>
+Allows an entire classroom to view lessons, diagrams, videos,
+presentations and interactive content.
+</p>
+<span class="tag">Recommended</span>
+</div>
+
+<div class="equipment-card">
+<div class="emoji">🎥</div>
+<h3>Camera & Microphone</h3>
+<p>
+Useful for two-way communication between students and remote teachers.
+</p>
+<span class="tag">Recommended</span>
+</div>
+
+<div class="equipment-card">
+<div class="emoji">📡</div>
+<h3>Internet Connection</h3>
+<p>
+A stable connection supports live classes, educational websites
+and communication with remote teachers.
+</p>
+<span class="tag">Essential</span>
+</div>
+
+<div class="equipment-card">
+<div class="emoji">🔋</div>
+<h3>Power Backup</h3>
+<p>
+UPS, inverter or another suitable backup can help keep classes
+running during power interruptions.
+</p>
+<span class="tag">Useful</span>
+</div>
+
+<div class="equipment-card">
+<div class="emoji">📚</div>
+<h3>Digital Content</h3>
+<p>
+Prepare lessons, notes, videos, quizzes and other resources that
+students can use during and after class.
+</p>
+<span class="tag">Essential</span>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- BENEFITS -->
+
+<section class="benefits">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label" style="color:#bae6fd;">The Impact</span>
+
+<h2>What Can Digital Learning Change?</h2>
+
+<p>
+When technology is implemented thoughtfully, it can support students,
+teachers, families and the wider community.
+</p>
+
+</div>
+
+<div class="benefit-grid">
+
+<div class="benefit">
+<div class="benefit-icon">🎓</div>
+<h3>Students</h3>
+<p>
+More learning resources, wider exposure and opportunities to
+develop digital skills.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">👨‍🏫</div>
+<h3>Teachers</h3>
+<p>
+Access to teaching resources, training and opportunities to
+collaborate with other educators.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">👨‍👩‍👧</div>
+<h3>Families</h3>
+<p>
+Greater awareness of educational opportunities and the value
+of digital learning.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🚀</div>
+<h3>Community</h3>
+<p>
+A stronger digital learning environment can contribute to
+long-term educational development.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ACTION -->
+
+<section class="action">
+
+<div class="container">
+
+<div class="action-box">
+
+<div>
+
+<h2>Be Part of the Change</h2>
+
+<p>
+You do not need to be a technology expert to help.
+Schools, teachers, students, parents, volunteers and organisations
+can all contribute by spreading awareness and supporting digital education.
+</p>
+
+</div>
+
+<a href="#contact" class="btn btn-primary">
+Get Involved →
+</a>
+
+</div>
+
+</div>
+</section>
+
+<!-- FAQ -->
+
+<section class="faq" id="faq">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">Learn More</span>
+
+<h2>Frequently Asked Questions</h2>
+
+<p>
+Some common questions about setting up virtual classrooms in
+rural schools.
+</p>
+
+</div>
+
+<div class="faq-container">
+
+<div class="faq-item">
+
+<button class="faq-question">
+Does a rural school need expensive equipment?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+No. A school can begin with basic equipment such as a laptop,
+display/projector, speakers and an appropriate internet connection.
+The setup can be expanded over time.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+What if internet connectivity is poor?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Live classes may be supplemented with downloadable or offline
+learning materials, recorded lessons and locally stored educational
+content. The best approach depends on the connectivity available
+in that community.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+Will virtual classrooms replace local teachers?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+No. Virtual classrooms are intended to support teachers and expand
+access to expertise and learning resources. Local teachers remain
+important for classroom support, mentoring and understanding
+students' needs.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+How can students benefit?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Students can access additional lessons, educational content,
+subject experts, digital tools and opportunities to develop
+skills useful for further education and future careers.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+How can the community help?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Community members can spread awareness, volunteer, help schools
+identify needs, support digital literacy and connect schools with
+organisations or individuals who can provide educational assistance.
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="label">Take Action</span>
+
+<h2>Start a Conversation</h2>
+
+<p>
+Have an idea, want to support a school, or want to learn more?
+Send us a message.
+</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-info">
+
+<h3>Every Connection Matters.</h3>
+
+<p>
+Awareness is the first step. Sharing information about digital
+education can help communities discover new possibilities.
+</p>
+
+<ul class="contact-points">
+<li>🏫 <strong>Schools:</strong> Explore a virtual classroom setup.</li>
+<li>👨‍🏫 <strong>Teachers:</strong> Share ideas and learning resources.</li>
+<li>🤝 <strong>Volunteers:</strong> Help spread digital awareness.</li>
+<li>🌱 <strong>Communities:</strong> Support local education initiatives.</li>
+</ul>
+
+</div>
+
+<form id="contactForm">
+
+<div class="form-group">
+<label for="name">Your Name</label>
+<input id="name" type="text" placeholder="Enter your name" required>
+</div>
+
+<div class="form-group">
+<label for="email">Email Address</label>
+<input id="email" type="email" placeholder="Enter your email" required>
+</div>
+
+<div class="form-group">
+<label for="role">I am a...</label>
+<select id="role">
+<option>Student</option>
+<option>Teacher</option>
+<option>Parent</option>
+<option>School Representative</option>
+<option>Volunteer</option>
+<option>Organisation</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" placeholder="How would you like to get involved?" required></textarea>
+</div>
+
+<button class="submit-btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<h3>📚 RuralConnect</h3>
+
+<p>
+A digital awareness initiative promoting virtual classrooms
+and equal educational opportunities for rural communities.
+</p>
+
+</div>
+
+<div>
+
+<h4>Explore</h4>
+
+<ul>
+<li><a href="#problem">The Problem</a></li>
+<li><a href="#solution">Our Solution</a></li>
+<li><a href="#how">Implementation</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h4>Get Involved</h4>
+
+<ul>
+<li><a href="#contact">Contact Us</a></li>
+<li><a href="#faq">FAQs</a></li>
+<li><a href="#home">Spread Awareness</a></li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 RuralConnect • Virtual Classrooms for Rural Schools
+</div>
+
+</div>
+
+</footer>
+
+<!-- BACK TO TOP -->
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("show");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        document.getElementById("navLinks").classList.remove("show");
+    });
+});
+
+
+/* FAQ */
+
+document.querySelectorAll(".faq-question").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const item=button.parentElement;
+        const isActive=item.classList.contains("active");
+
+        document.querySelectorAll(".faq-item").forEach(other=>{
+            other.classList.remove("active");
+            other.querySelector(".faq-question span").textContent="+";
+        });
+
+        if(!isActive){
+            item.classList.add("active");
+            button.querySelector("span").textContent="−";
+        }
+
+    });
+
+});
+
+
+/* CONTACT FORM */
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const name=document.getElementById("name").value;
+
+    alert(
+        "Thank you, " + name +
+        "! Your message has been received. Together, we can help spread awareness about digital education."
+    );
+
+    this.reset();
+
+});
+
+
+/* BACK TO TOP */
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY>500){
+        topBtn.style.display="block";
+    }else{
+        topBtn.style.display="none";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
