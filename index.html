@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Virtual Classrooms for Rural Schools</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f8fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      background: #0b4f6c;
+      color: white;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav h2 {
+      font-size: 22px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffd166;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 8%;
+      background: linear-gradient(
+        135deg,
+        #0b4f6c,
+        #01baef
+      );
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      background: #ffd166;
+      color: #222;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    /* General Section */
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      color: #0b4f6c;
+    }
+
+    .section-title p {
+      color: #666;
+      margin-top: 10px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      color: #0b4f6c;
+      margin-bottom: 15px;
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    /* Problem Section */
+    .problem {
+      background: #eaf6fb;
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background: white;
+      padding: 25px;
+      border-left: 5px solid #01baef;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .step-number {
+      font-size: 30px;
+      font-weight: bold;
+      color: #01baef;
+    }
+
+    /* Statistics */
+    .stats {
+      background: #0b4f6c;
+      color: white;
+    }
+
+    .stats .section-title h2 {
+      color: white;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+
+    .stat-box h2 {
+      font-size: 45px;
+      color: #ffd166;
+    }
+
+    /* Contact */
+    .contact {
+      background: white;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input,
+    textarea {
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    textarea {
+      height: 130px;
+      resize: none;
+    }
+
+    button {
+      padding: 14px;
+      background: #0b4f6c;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #01baef;
+    }
+
+    /* Footer */
+    footer {
+      background: #082f40;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>📚 Rural Virtual Classrooms</h2>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#implementation">Implementation</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>Setting Up Virtual Classrooms for Rural Schools</h1>
+
+      <p>
+        Empowering rural students with digital education, quality teachers,
+        modern technology and equal learning opportunities.
+      </p>
+
+      <a href="#solution" class="btn">
+        Explore Our Solution
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Problem Section -->
+  <section class="problem" id="problem">
+
+    <div class="section-title">
+
+      <h2>Challenges Faced by Rural Schools</h2>
+
+      <p>
+        Rural education faces several challenges that affect the quality
+        and accessibility of learning.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🌐</div>
+
+        <h3>Limited Internet Access</h3>
+
+        <p>
+          Many rural areas face slow or unstable internet connectivity,
+          making online learning difficult.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">👩‍🏫</div>
+
+        <h3>Shortage of Teachers</h3>
+
+        <p>
+          Rural schools often face a shortage of qualified teachers for
+          advanced subjects.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">💻</div>
+
+        <h3>Lack of Technology</h3>
+
+        <p>
+          Many schools do not have sufficient computers, projectors,
+          digital boards or learning devices.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">📖</div>
+
+        <h3>Limited Learning Resources</h3>
+
+        <p>
+          Students may have limited access to updated educational materials
+          and digital learning content.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Solution -->
+  <section id="solution">
+
+    <div class="section-title">
+
+      <h2>Our Proposed Solution</h2>
+
+      <p>
+        A smart and affordable virtual classroom system designed for
+        rural schools.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="icon">🖥️</div>
+
+        <h3>Digital Classroom</h3>
+
+        <p>
+          Install smart displays, projectors and computers to create
+          interactive learning environments.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📡</div>
+
+        <h3>Internet Connectivity</h3>
+
+        <p>
+          Provide reliable broadband or satellite internet connections
+          for online classes.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🎥</div>
+
+        <h3>Live Online Classes</h3>
+
+        <p>
+          Students can attend live classes conducted by expert teachers
+          from different locations.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📱</div>
+
+        <h3>Digital Learning Platform</h3>
+
+        <p>
+          Provide recorded lectures, notes, assignments and quizzes
+          through an online platform.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Implementation -->
+  <section class="problem" id="implementation">
+
+    <div class="section-title">
+
+      <h2>Implementation Plan</h2>
+
+      <p>
+        A step-by-step approach for successfully setting up virtual classrooms.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">01</div>
+
+        <h3>Identify Schools</h3>
+
+        <p>
+          Select rural schools that require digital learning infrastructure.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">02</div>
+
+        <h3>Install Equipment</h3>
+
+        <p>
+          Set up computers, projectors, smart boards and internet systems.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">03</div>
+
+        <h3>Train Teachers</h3>
+
+        <p>
+          Provide training to teachers on using digital tools and
+          virtual learning platforms.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">04</div>
+
+        <h3>Start Virtual Classes</h3>
+
+        <p>
+          Connect students with expert teachers and provide interactive
+          online education.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Benefits -->
+  <section>
+
+    <div class="section-title">
+
+      <h2>Benefits of Virtual Classrooms</h2>
+
+      <p>
+        Virtual learning can create equal educational opportunities for
+        rural students.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="icon">🎓</div>
+
+        <h3>Better Education</h3>
+
+        <p>
+          Students gain access to quality teachers and educational content.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🌍</div>
+
+        <h3>Equal Opportunities</h3>
+
+        <p>
+          Rural students can access the same learning opportunities as
+          students in urban areas.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">💰</div>
+
+        <h3>Cost Effective</h3>
+
+        <p>
+          Digital resources reduce the cost of physical books and
+          travelling for education.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🚀</div>
+
+        <h3>Future Ready</h3>
+
+        <p>
+          Students develop digital skills required for higher education
+          and future careers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Statistics -->
+  <section class="stats">
+
+    <div class="section-title">
+
+      <h2>Project Impact</h2>
+
+    </div>
+
+
+    <div class="stats-container">
+
+      <div class="stat-box">
+
+        <h2>100+</h2>
+
+        <p>Students Connected</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>10+</h2>
+
+        <p>Virtual Classrooms</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>20+</h2>
+
+        <p>Digital Learning Sessions</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>50+</h2>
+
+        <p>Learning Resources</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+
+    <div class="section-title">
+
+      <h2>Contact Our Project Team</h2>
+
+      <p>
+        Have questions or suggestions about the project? Contact us.
+      </p>
+
+    </div>
+
+
+    <form id="contactForm">
+
+      <input
+        type="text"
+        placeholder="Enter Your Name"
+        required
+      >
+
+      <input
+        type="email"
+        placeholder="Enter Your Email"
+        required
+      >
+
+      <textarea
+        placeholder="Enter Your Message"
+        required
+      ></textarea>
+
+      <button type="submit">
+        Send Message
+      </button>
+
+    </form>
+
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <p>
+      © 2026 Setting Up Virtual Classrooms for Rural Schools
+    </p>
+
+    <p>
+      College Community Engagement Project
+    </p>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script>
+
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+          "Thank you! Your message has been submitted successfully."
+        );
+
+        this.reset();
+
+      });
+
+  </script>
+
+</body>
+</html>
